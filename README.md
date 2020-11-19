@@ -2,8 +2,6 @@
 
 On this page is a collection of code snippets, challenges, and other information gathered by the Psychology Coding Club. We work together to learn new ways to improve and enhance our coding skills, help people out, and give ourselves new and interesting challenges.
 
-:potato:
-
 ## Coding Club Members
 
 - Matt Anderson *[add link/social/scholar]*
@@ -24,11 +22,11 @@ In the first challenge, Philippa challenged us with the following:
 
 We did what we could.
 
-*[Matt's response]*
-*[Veronica's response]*
+- *[Matt's response]*
+- *[Veronica's response]*
 
-Hayward put a version together that you can see the code for by [clicking here](https://github.com/hjgodwin/soton-psychology-coding-club/tree/main/Challenges/Week%201%20-%20The%20Broadbent%20Challenge/Hayward). There's a live version of the study that you can find by [clicking here](https://studies.psychology.soton.ac.uk/publix/88/start?batchId=95&generalMultiple).
+- Hayward put a version together that you can see the code for by [clicking here](https://github.com/hjgodwin/soton-psychology-coding-club/tree/main/Challenges/Week%201%20-%20The%20Broadbent%20Challenge/Hayward). There's a live version of the study that you can find by [clicking here](https://studies.psychology.soton.ac.uk/publix/88/start?batchId=95&generalMultiple).
 
-### Challenge #2: The Rotato Challenge
+### Challenge #2: :potato: The Rotato Challenge
 
 Coming soon.
