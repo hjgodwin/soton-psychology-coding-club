@@ -10,7 +10,7 @@ On this page is a collection of code snippets, challenges, and other information
 - Hayward Godwin *[add link/social/scholar]*
 - Veronica Pisu *[add link/social/scholar]*
 - Michaela Trescackova *[add link/social/scholar]*
-- Greta Vilidaite *[add link/social/scholar]*
+- Greta Vilidaite (https://scholar.google.com/citations?user=KSeCnWMAAAAJ&hl=en&oi=ao)
 
 ## Coding Club Challenges
 
@@ -18,7 +18,7 @@ On this page is a collection of code snippets, challenges, and other information
 
 In the first challenge, Philippa challenged us with the following:
 
->The goal is the have a button on every page of the experiment which, when clicked, redirects the participant to the debrief page and deletes their data (like the addAbortButton jatos function that doesn't seem to work when the jsPsych experiment is exported to external jatos).  A bonus challenge is to left-align the text in the consent and debrief forms but keep the text in the main experiment centre-aligned. 
+>The goal is the have a button on every page of the experiment which, when clicked, redirects the participant to the debrief page and deletes their data (like the addAbortButton jatos function that doesn't seem to work when the jsPsych experiment is exported to external jatos).  A bonus challenge is to left-align the text in the consent and debrief forms but keep the text in the main experiment centre-aligned.
 
 We did what we could.
 
@@ -29,4 +29,5 @@ We did what we could.
 
 ### Challenge #2: :potato: The Rotato Challenge
 
-Coming soon.
+The challenge:
+To create a simple rotating 3D object that can be somehow adjusted by the participant (e.g. moving the mouse would change the size or shape of it) and display this during a trial alongside a static image stimulus, ideally in jsPsych. For example, the previous version of the experiment (written in Matlab) had two surfaces in the shape of an open book which could be adjusted by the participants (making the book more or less open). This was presented next to a circular image stimulus of a natural scene.
