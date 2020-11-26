@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>p5_Test</title>
+		<script src="jsPsych-master/jspsych.js"></script>
+	    <link href="jsPsych-master/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+	    <script src="jspsych-master/plugins/jspsych-animate-primitive.js"></script>
+	    <script src="p5/p5.js"></script>
+	    <script src="jatos.js"></script>
+
+	</head>
+	<!-- <body style="background-color: rgb(50,50,50);"> -->
+	</body>
+
+	<script type="text/javascript">
+
+		// Set up object using default properties
+		var ts = [70,40];
+
+		var s = (sketch) => {
+
+			sketch.setup = () => {
+				sketch.createCanvas(300, 300, sketch.WEBGL);
+				sketch.background(255);
+				sketch.torus(ts[0], ts[1]);
+				sketch.noLoop();
+			};
+
+			sketch.draw = () => {
+			
+			};
+
+		};
+
+		var timeline = [];
+
+		var animate_primitive = {
+			type: 'jspsych-animate-primitive',
+			primitive: 'torus',
+			image: 'cute_cat.jpg',
+			image_width: 300,
+			image_height: 175,
+			primitive_width: 300,
+			primitive_height: 300,
+			choices: [['Okay'], ['No Thanks']],
+		    prompt: "<p>Orient the donut so the cat is happy?</p>",
+		    response_ends_trial: true
+
+		}
+		timeline.push(animate_primitive);
+
+	    jatos.onLoad(function(){
+			jsPsych.init({
+				timeline: timeline,
+				on_finish: function(){
+					var resultcsv = jsPsych.data.get().csv();
+					jatos.endStudy(resultcsv);
+				}
+			});
+		});
+
+	</script>
+
+</html>
