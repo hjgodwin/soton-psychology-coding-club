@@ -4,7 +4,7 @@ On this page is a collection of code snippets, challenges, and other information
 
 ## Coding Club Members
 
-- Matt Anderson *[add link/social/scholar]*
+- Matt Anderson *https://scholar.google.com/citations?user=xybZSF8AAAAJ&hl=en*
 - Philippa Broadbent *[add link/social/scholar]*
 - Ovidiu-Ionut Brudan *[add link/social/scholar]*
 - Hayward Godwin *[add link/social/scholar]*
