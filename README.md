@@ -22,11 +22,12 @@ In the first challenge, Philippa challenged us with the following:
 
 We did what we could.
 
-- *[Matt's response]*
+- *Matt: To create the quit button, I used the existing jspsych plugin 'survey-likert', to create a new, custom plugin, 'survery-likert-withquitbutton'. In the plugin itself, I added a button element, and an event listener which invokes the jatos function 'startNextComponent()' when the button is clicked. To left-align the text, I wrapped a html div around the to-be-formatted text, and used some inline css*
 - *[Veronica's response]*
 
 - Hayward put a version together that you can see the code for by [clicking here](https://github.com/hjgodwin/soton-psychology-coding-club/tree/main/Challenges/Week%201%20-%20The%20Broadbent%20Challenge/Hayward). There's a live version of the study that you can find by [clicking here](https://studies.psychology.soton.ac.uk/publix/88/start?batchId=95&generalMultiple).
 
 ### Challenge #2: :potato: The Rotato Challenge
 
-Coming soon.
+- *Matt: I used the p5.js library to rotate a torus around its x and y axes based on the mouse movements of the user. To make p5 and jspsych work together, I set up a javascript p5 object in the main html script. In the documentation, this is referred to as p5 'instance mode'. Here I set other relevant properties like the background, and the shape that the user sees before they've interacted with anything. I do not create an instance of this object until the user begins a trial. I set up a specific trial type/plugin called 'jspsych-animate-primitive.js'. At this point, an instance is created, and the instance is assigned to a html div (defined in the plugin) so that its position in the window can be adjusted using css. An event listener moves the torus whenever the user presses the mouse down and moves the mouse. The x and y rotation in radians are saved when the user presses any of the buttons (and finishes the trial). Finishing the trial deletes the p5 instance.*
+- *[Veronica's response]*
