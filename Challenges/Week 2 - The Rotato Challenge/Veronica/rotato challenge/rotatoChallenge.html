@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rotato challenge</title>
+  <script src="jspsych-6/jspsych.js"></script>
+  <script src="jspsych-6/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="jspsych-psychophysics-master/jspsych-psychophysics.js"></script>
+  <link href="jspsych-6/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  <link href="customStyle.css" rel="stylesheet" type="text/css"></link>
+
+</head>
+
+<body></body>
+<script>
+
+// create timeline
+var timeline = [];
+
+// define instructions trial
+var instructions = {
+  type: 'html-keyboard-response',
+  stimulus: '<p>This is a basic page, where working with multiple stimuli can be a bit difficult</p>',
+  post_trial_gap: 500,
+};
+
+var canvWidth = 1000;
+var canvHeight = 800;
+var rightPos = canvWidth/4; 
+var leftPos = -(canvWidth/4);
+var topPos = -(canvHeight/2);
+var bottomPos = canvHeight/2;
+
+var text_object1 = {
+  obj_type: 'text',
+  startX: 0,
+  startY: topPos+(24*2), // text is 24 px
+  content: 'Here I created a 800x400px html canvas where you can draw stimuli via JavaScript\n\n Stimuli can be positioned in the canvas using xy coords',
+  font: "24px 'Arial'",
+  text_color: 'white',
+  origin_center: true // change the coord origin to the centre of the window
+}
+
+var text_object2 = {
+  obj_type: 'text',
+  content: 'You can set the origin of the axes at the centre of the canvas',
+  font: "24px 'Arial'",
+  text_color: 'white',
+  startX: 0,
+  startY: 0,
+  origin_center: true 
+}
+
+var text_object3 = {
+  obj_type: 'text',
+  content: 'Press spacebar to continue',
+  font: "24px 'Arial'",
+  text_color: 'red',
+  startX: 0,
+  startY: bottomPos-24,
+  origin_center: true 
+}
+
+
+var text_object4 = {
+  obj_type: 'text',
+  content: 'You can easily position as many objects as you need, wherever you like',
+  font: "24px 'Arial'",
+  text_color: 'white',
+  startX: 0,
+  startY: topPos+24,
+  origin_center: true 
+}
+
+var text_object5 = {
+  obj_type: 'text',
+  content: 'You can use JS to create fancier objects',
+  font: "24px 'Arial'",
+  text_color: 'white',
+  startX: 0,
+  startY: topPos+24,
+  origin_center: true
+}
+
+// some examples of basic shapes, presented at different times from the trial start
+var shape_object1 = {
+  obj_type: 'circle',
+  origin_center: true, 
+  startX: leftPos, 
+  startY: 0,
+  radius: 100, // of the disk
+  line_color: 'white', 
+  fill_color: 'white',
+  show_start_time: 1500 
+}
+
+var shape_object2 = {
+  obj_type: 'rect',
+  origin_center: true, 
+  startX: rightPos, 
+  startY: 0,
+  width: 100, // of the rect 
+  height: 100,
+  line_color: 'white', 
+  fill_color: 'white',
+  show_start_time: 2000 
+}
+
+var shape_object3 = {
+  obj_type: 'rect',
+  origin_center: true, 
+  startX: 0, 
+  startY: -200,
+  width: 200, 
+  height: 100,
+  line_color: 'yellow', 
+  fill_color: 'yellow',
+  show_start_time: 2500 
+}
+
+var shape_object4 = {
+  obj_type: 'rect',
+  origin_center: true, 
+  startX: 300, 
+  startY: 100,
+  width: 100, 
+  height: 200,
+  line_color: 'green', 
+  fill_color: 'green',
+  show_start_time: 3000 
+}
+
+  var line_object1 = {
+      obj_type: 'line',
+      origin_center: true,
+      startX: 0, 
+      startY: 0,
+      angle: 45,
+      line_length: 500,
+      line_color: 'orange', 
+      show_start_time: 3500, 
+  }
+
+// some examples of how you can use JS functions to draw stimuli
+// all examples taken from the jspsych-psychophysics demo library
+var special_shape_object1 = {
+    obj_type: 'rect', // means a rectangle
+    startX: leftPos, // location in the canvas
+    startY: 0,
+    origin_center: true,
+    width: 200, // of the rectangle
+    height: 200,
+    line_color: 'rgb(0,0,0)',
+    fill_color: 'rgb(0,0,0)',
+    change_attr: function(stim, times, frames){ // called by the requestAnimationFrame
+        const frequency = 0.05;
+        const sin_value = Math.sin(2 * Math.PI * frequency * times/1000) // The times are in terms of milliseconds
+        const normalized_value = sin_value/2 + 1/2; // from 0 to 1
+        color = Math.floor(normalized_value * 255) // An integer between 0 and 255
+        stim.fill_color = `rgb(${color}, ${color}, ${color})`
+    }
+}
+
+var special_shape_object2 = {
+  obj_type: 'circle',
+  startX: 0, 
+  startY: 0,
+  endX: 300,
+  endY: 0,
+  radius: 30,
+  origin_center: true, 
+  fill_color: 'black',
+  show_start_time: 1500,
+  motion_start_time: 2500,
+  horiz_pix_frame: 10,
+}
+
+var special_shape_object3= {
+  obj_type: 'circle',
+  startX: 0, 
+  startY: -300,
+  endX: 0,
+  endY: 300,
+  radius: 50,
+  origin_center: true, 
+  fill_color: 'blue',
+  show_start_time: 3500,
+  motion_start_time: 4500,
+  vert_pix_frame: 10,
+}
+
+var trial1 = {
+  type: 'psychophysics',
+  stimuli: [text_object1, text_object2, text_object3],
+  choices: [32], // spacebar to continue
+  canvas_width: canvWidth,
+  canvas_height: canvHeight,
+  background_color: 'rgb(165, 165, 165)', // expt's bkg is 150, using 165 to highlight the canvas
+}
+
+var trial2 = {
+  type: 'psychophysics',
+  stimuli: [text_object4, shape_object1, shape_object2, shape_object3, shape_object4, line_object1, text_object3],
+  choices: [32], // spacebar to continue
+  canvas_width: canvWidth,
+  canvas_height: canvHeight,
+  background_color: 'rgb(165, 165, 165)', 
+}
+
+var trial3 = {
+  type: 'psychophysics',
+  stimuli: [text_object5, special_shape_object1, special_shape_object2, special_shape_object3],
+  choices: [32], // spacebar to continue
+  canvas_width: canvWidth,
+  canvas_height: canvHeight,
+  background_color: 'rgb(165, 165, 165)', 
+}
+
+jsPsych.init({
+  timeline: [instructions, trial1, trial2, trial3],
+  on_finish: function(){jsPsych.data.displayData(); },
+  exclusions: {
+    min_width: 800,
+    min_height:600
+  }
+});
+
+</script>
+</html>
