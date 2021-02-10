@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Virtual Chinrest Example</title>
+		<script src="jsPsych-master/jspsych.js"></script>
+	    <script src="jsPsych-master/plugins/jspsych-virtual-chinrest.js"></script>
+	    <script src="jsPsych-master/plugins/jspsych-image-button-response.js"></script>
+	    <link href="jsPsych-master/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+	    <script src="jatos.js"></script>
+
+	    <!-- Virtual Chinrest things-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.min.js"></script>
+        <script src="virtual_chinrest.js"></script>
+	</head>
+	<body style="background-color: rgb(50,50,50);">
+	</body>
+
+	<script type="text/javascript">
+
+		// Initialize variables for setting up the trial structure
+		var timeline = [];
+		const stimDim = [1200,800];
+		const FoV_deg = 20;
+
+		var virtualChinrest = {
+			type: 'virtual-chinrest',
+			img_horzpx: stimDim[0],
+			img_VA: FoV_deg,
+		}
+		timeline.push(virtualChinrest);
+
+		var trial = {
+		    type: 'image-button-response',
+		    stimulus: 'ExampleStim.png',
+		    choices: ['Yeh', 'Nah'],
+		    prompt: "<p style='color:white;'>Yeh or Nah?</p>",
+		    stimulus_width: function(){
+				return (stimDim[0]*jsPsych.data.get().filter({trial_type: 'virtual-chinrest'}).values()[0]['Scaling Factor']);
+			}
+		};
+		timeline.push(trial);
+
+	    jatos.onLoad(function(){
+			jsPsych.init({
+				timeline: timeline,
+				on_finish: function(){
+
+					// once ppt has finished, we remove the space for the condition that he/she completed
+					jatos.endStudyAndRedirect("http://0.0.0.0:9000/jatos/71#");
+				}
+			});
+		});
+
+	</script>
+
+</html>
